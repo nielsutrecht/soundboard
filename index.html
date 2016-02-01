@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="soundBoard" ng-controller="MainCtrl">
+    <head>
+        <title>Team Forward Thinking Soundboard</title>
+
+        <link rel="stylesheet" href="lib/bootstrap.min.css">
+        <link rel="stylesheet" href="lib/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="style.css">
+        <meta id="meta" name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+
+        <div class="row">
+            <div class="col-lg-3">&nbsp;</div>
+            <div class="col-sm-12 col-lg-6">
+                <div><h1>Forward Thinking Soundboard</h1></div>
+                <button ng-repeat="(i, sound) in sounds" ng-click="playSound(i)">
+                    <img ng-if="sound.icon" width="64" height="64" ng-src="{{sound.icon}}" ng-attr-title="{{sound.name}} ({{sound.played}} plays)"/>
+                    <span ng-if="!sound.icon">{{sound.name}}</span>
+                </button>
+            </div>
+            <div class="col-lg-3">&nbsp;</div>
+        </div>
+        <div class="overlay" ng-show="overlay" ng-click="cancelSound()">
+            <div class="row">
+                <div class="col-lg-3">&nbsp;</div>
+                <div class="col-sm-12 col-lg-6">
+                    <div class="dialog">
+                        <div><h1>Now Playing</h1></div>
+                        <div><h2>{{playing.name}}, {{playing.obj.remaining | number: 2}}s remaining</h2></div>
+                    </div>
+                </div>
+                <div class="col-lg-3">&nbsp;</div>
+            </div>
+        </div>
+        <script src="lib/angular.min.js"></script>
+        <script src="lib/angular.audio.js"></script>
+        <script src="app/app.js"></script>
+    </body>
+</html>
+

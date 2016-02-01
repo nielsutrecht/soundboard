@@ -1,0 +1,1 @@
+ls sounds/*.mp3|sed 's/sounds\/\(.*\).mp3/{"name":"\1", "url":"sounds\/\1.mp3"},/'
